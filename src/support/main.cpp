@@ -7,8 +7,8 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-ServerInstance *si = nullptr;
-std::list<std::function<void(ServerInstance *)>> hookList;
+static ServerInstance *si = nullptr;
+static std::list<std::function<void(ServerInstance *)>> hookList;
 
 EXPORT void initString(const char *inp, std::string *data);
 EXPORT void setString(const char *inp, std::string *data);
