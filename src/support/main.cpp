@@ -5,8 +5,6 @@
 #include <mods.h>
 #include <string>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 static ServerInstance *si = nullptr;
 static std::list<std::function<void(ServerInstance *)>> hookList;
 
@@ -31,13 +29,13 @@ void regServerHook(void (*fn)(ServerInstance *)) { hookList.emplace_back(fn); }
 void regServerHook2(std::function<void(ServerInstance *)> fn) { hookList.emplace_back(fn); }
 
 void queueTask(void (*fn)()) {
-    if (si) { si->queueForServerThread(fn); }
-    fn();
+  if (si) { si->queueForServerThread(fn); }
+  fn();
 }
 
 void queueTask2(const std::function<void()> &fn) {
-    if (si) { si->queueForServerThread(fn); }
-    fn();
+  if (si) { si->queueForServerThread(fn); }
+  fn();
 }
 
 TInstanceHook(void, _ZN14ServerInstance17startServerThreadEv, ServerInstance) {
@@ -45,4 +43,3 @@ TInstanceHook(void, _ZN14ServerInstance17startServerThreadEv, ServerInstance) {
   si = this;
   for (auto &hook : hookList) { hook(this); }
 }
-#pragma clang diagnostic pop

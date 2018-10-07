@@ -1,11 +1,6 @@
 #include <StaticHook.h>
 #include <string>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCDFAInspection"
-#pragma ide diagnostic ignored "NotImplementedFunctions"
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 class NetworkIdentifier;
 
 class ClientToServerHandshakePacket;
@@ -38,5 +33,3 @@ TClasslessInstanceHook(void, _ZN12PacketSender19sendToPrimaryClientERK17NetworkI
 
 TClasslessInstanceHook(void,
                        _ZN20EncryptedNetworkPeer16enableEncryptionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE) {}
-
-#pragma clang diagnostic pop
