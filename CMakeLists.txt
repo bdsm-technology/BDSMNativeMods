@@ -34,8 +34,6 @@ foreach(mod ${SUBDIRS})
   if (EXISTS "${PROJECT_SOURCE_DIR}/src/${mod}/CMakeLists.txt")
     add_subdirectory(${PROJECT_SOURCE_DIR}/src/${mod})
   endif()
-  # add_custom_command(TARGET ${mod} POST_BUILD
-  #                    COMMAND patchelf --add-needed libsubstrate.so ${PROJECT_BINARY_DIR}/out/${mod}.so)
   set_target_properties(${mod} PROPERTIES PREFIX ""
                                           SUFFIX ".so"
                                           LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/out/)
